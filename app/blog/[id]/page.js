@@ -3,8 +3,8 @@
 
 
 import axios from 'axios';
-async function BlogPage({params:{id}}) {
-
+async function BlogPage({params}) {
+const id = params.id
 
 
   
@@ -28,8 +28,22 @@ console.log('the content work' , data )
 
   return (
     
-
+<>
 <h1>{data?._id}</h1>
+<div>
+  {
+    data.content.map((item , index)=>(
+      <div key={index}>  
+        {
+          item.type === 'title1'&&(
+            <h1>{item.value}</h1>
+          )
+        }
+      </div>
+    ))
+  }
+</div>
+</>
     
   );
 }
